@@ -39,6 +39,11 @@ def decomposition(n, values_start, values_end):
 
                 effect[i] += contribution_level
 
+    value_start = np.prod(values_start)
+    value_end = np.prod(values_end)
+    
+    np.testing.assert_almost_equal(np.sum(effect), value_end - value_start)
+    
     return {
         'value_start': np.prod(values_start),
         'value_end': np.prod(values_end),
